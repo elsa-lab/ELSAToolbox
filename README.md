@@ -53,7 +53,7 @@ The `elsatoolbox` package loads the `setspace` package. In order to disable it, 
 ## Loaded Packages
 
 |`inputenc`|`microtype`|`atbegshi`|`etoolbox`|`tikz`|
-|---|---|---|---|---|
+|:-:|:-:|:-:|:-:|:-:|
 |`algorithm2e`|`fixme`|`zref`|`afterpage`|`graphicx`|
 |`subcaption`|`hyperref`|`amssymb`|`amsthm`|`bbm`|
 |`mathrsfs`|`mathtools`|`xfrac`|`setspace`|`array`|
