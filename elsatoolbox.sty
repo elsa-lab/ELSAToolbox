@@ -1,0 +1,408 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Copyright
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Copyright 2019 Yi-Hsiang Chang
+% Copyright 2021 Kuan-Yu Chang
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Usage and draft mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Customization core package
+%
+% Usage:
+% Add the following command to the main TeX file:
+%
+% ```latex
+% \usepackage{elsatoolbox}
+% ```.
+%
+% To enable the draft mode, add an option:
+%
+% ```latex
+% \usepackage[draft]{elsatoolbox}
+% ```.
+%
+% To disable `algorithm2e`, add an option:
+%
+% ```latex
+% \usepackage[noalgo]{elsatoolbox}
+% ```.
+%
+% To disable `subcaption`, add an option:
+%
+% ```latex
+% \usepackage[nosubcap]{elsatoolbox}
+% ```.
+%
+% To disable `setspace`, add an option:
+%
+% ```latex
+% \usepackage[nosetspace]{elsatoolbox}
+% ```.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{elsatoolbox}[2021/06/23%
+    A package that includes common packages, which%
+    makes preparing LaTeX documents easier.]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Core Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------
+
+% ## inputenc - Accept different input encodings
+%
+% This package accept UTF8 input encodings.
+%
+% CTAN: https://ctan.org/pkg/inputenc
+% 
+% References:
+% https://tex.stackexchange.com/a/370279
+
+\RequirePackage[utf8]{inputenc}
+
+%-------------------------------------------------
+
+% ## microtype – Subliminal refinements towards
+%                typographical perfection
+%
+% This package will make a single line more likely
+% to contain more words, thus reducing the overall 
+% space a paragraph occupies.
+%
+% CTAN: https://ctan.org/pkg/microtype
+% 
+% References:
+% https://texblog.net/latex-archive/latex-general/pdflatex-microtype/
+
+\RequirePackage{microtype}
+
+%-------------------------------------------------
+
+% ## atbegshi – Execute stuff at \shipout time
+%
+% This package is used for defining commands that 
+% will be executed when a page is shipped out.
+%
+% CTAN: https://ctan.org/pkg/atbegshi
+
+\RequirePackage{atbegshi}
+
+%-------------------------------------------------
+
+% ## etoolbox – e-TEX tools for LATEX
+%
+% This package is used for providing conditional 
+% variables for internal usage.
+%
+% CTAN: https://ctan.org/pkg/etoolbox
+
+\RequirePackage{etoolbox}
+
+%-------------------------------------------------
+
+% ## pgf – Create PostScript and PDF graphics in 
+%          TEX
+%
+% This package is used for adding draft mode
+% reminder text. But the user can also use it
+% to draw figures.
+%
+% CTAN: https://ctan.org/pkg/pgf
+
+\RequirePackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Declare Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## Add Draft Mode Variable
+%
+% Option "draft" turns on the draft mode.
+%
+% A boolean variable `draftmode` is set to true
+% by default, but is set to true when the option
+% is mentioned.
+
+\newbool{draftmode}
+\DeclareOption{draft}{%
+    \booltrue{draftmode}%
+}
+
+%-------------------------------------------------
+
+% ## Add NoAlgo Mode Variable
+%
+% Option "noalgo" disables the `algorithm2e`
+% package, which allows users to use other 
+% "pseudocode" typesetting  packages, such as 
+% `algorithmic`, `algorithmicx`, or `program`.
+%
+% A boolean variable `noalgomode` is set to false
+% by default, but is set to true when the option
+% is mentioned.
+
+\newbool{noalgomode}
+\DeclareOption{noalgo}{%
+    \booltrue{noalgomode}%
+}
+
+%-------------------------------------------------
+
+% ## Add NoSubcap Mode Variable
+%
+% Option "nosubcap" disables the `subcaption`
+% package, which allows users to use other
+% packages, such as `subfig`.
+%
+% A boolean variable `nosubcapmode` is set to false
+% by default, but is set to true when the option
+% is mentioned.
+
+\newbool{nosubcapmode}
+\DeclareOption{nosubcap}{%
+    \booltrue{nosubcapmode}%
+}
+
+%-------------------------------------------------
+
+% ## Add NoSetspace Mode Variable
+%
+% Option "nosetspace" disables the `setspace`
+% package which is incompatible with the `beamer`
+% LaTeX class.
+%
+% A boolean variable `nosetspacemode` is set to
+% false by default, but is set to true when the 
+% option is mentioned.
+
+\newbool{nosetspacemode}
+\DeclareOption{nosetspace}{%
+    \booltrue{nosetspacemode}%
+}
+
+%-------------------------------------------------
+
+% ## Handles every option not explicitly defined
+
+\DeclareOption*{%
+    \PackageWarningNoLine{elsatoolbox}{%
+        Invalid option \CurrentOption}%
+}
+
+%-------------------------------------------------
+
+% ## Process options
+
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Draft mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifbool{draftmode}{
+    
+% ## Draft mode is on
+%
+% Show the draft mode warning.
+
+\PackageWarningNoLine{elsatoolbox}{Draft mode is on}
+
+%-------------------------------------------------
+
+% ## Add reminder text
+%
+% Add a reminder text "Draft Mode" at the top of
+% each page.
+%
+% References:
+% https://tex.stackexchange.com/a/348935
+% https://tex.stackexchange.com/a/73944
+
+\AtBeginShipout{
+\AtBeginShipoutAddToBox{
+    \begin{tikzpicture}[overlay,remember picture]
+    \node[anchor=north,font=\Huge,text=red!25] at
+        (current page.north) {Draft Mode};
+    \end{tikzpicture}
+}
+}
+
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Commonly Used Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## Algorithms
+
+\ifbool{noalgomode}{}{
+
+% ### NoAlgo mode is off
+%
+% Load the `algorithm2e` package.
+
+\RequirePackage[ruled,linesnumbered]{algorithm2e}
+
+}
+
+
+%-------------------------------------------------
+
+% ## Annotations
+
+\RequirePackage{fixme}
+
+% ### Customize FiXme
+%
+% Enable the collaborative mode and unset the
+% default author.
+
+\fxsetup{mode=multiuser,author=}
+
+% Display annotations inline and with color.
+
+\fxsetup{layout=inline,theme=color}
+
+\ifbool{draftmode}{
+
+% #### Draft mode is on
+%
+% Show FiXme annotations.
+
+\fxsetup{status=draft}
+
+% Show the list of corrections at the first page.
+
+\AfterEndPreamble{%
+    \pagenumbering{Roman}%
+    \listoffixmes%
+    \pagenumbering{arabic}%
+}
+
+}{
+
+% #### Draft mode is off
+%
+% Hide FiXme annotations.
+
+\fxsetup{status=final}
+    
+}
+
+%-------------------------------------------------
+
+% ## Cross Referencing
+
+\RequirePackage[user,xr]{zref}
+
+% ### Customize zref
+%
+% Load external references from `main.tex` or
+% `supp.tex` and make the labels able to be 
+% referenced with prefix "main:" or "supp:", 
+% respectively.
+
+\IfFileExists{main.tex}{%
+    \IfFileExists{supp.tex}{%
+        \zexternaldocument*[main:]{main}%
+        \zexternaldocument*[supp:]{supp}%
+    }{}
+}{}
+
+%-------------------------------------------------
+
+% ## Floats
+
+\RequirePackage{afterpage}
+\RequirePackage{graphicx}
+
+\ifbool{nosubcapmode}{}{
+
+% ### NoSubcap mode is off
+%
+% Load the `subcaption` package.
+
+\RequirePackage[labelformat=simple]{subcaption}
+
+% #### Customize subcaption
+%
+% Change referencing format from 1a to 1 (a)
+
+\renewcommand{\thesubfigure}{~(\alph{subfigure})}
+\renewcommand{\thesubtable}{~(\alph{subtable})}
+
+}
+
+%-------------------------------------------------
+
+% ## Hyperlinks
+
+\ifbool{draftmode}{
+
+% ### Draft mode is on
+%
+% Adds ‘backlink’ text to the end of each item
+% in the bibliography, as a list of page numbers.
+
+\RequirePackage[pagebackref=true]{hyperref}
+
+% #### Customize hyperref
+%
+% Make hyperlinks easy to be spotted.
+
+\hypersetup{
+    colorlinks=true,%
+    linkcolor=blue,%
+    citecolor=red,%
+    urlcolor=blue%
+}
+
+}{
+
+% ### Draft mode is off
+%
+% Load the default `hyperref` package.
+
+\RequirePackage{hyperref}
+
+}
+
+%-------------------------------------------------
+
+% ## Mathematics
+
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{bbm}
+\RequirePackage{mathrsfs}
+\RequirePackage{mathtools}
+\RequirePackage{xfrac}
+
+%-------------------------------------------------
+
+% ## Spacing
+
+\ifbool{nosetspacemode}{}{
+
+% ### NoSetspace mode is off
+%
+% Load the `setspace` package.
+
+    \RequirePackage{setspace}    
+}
+
+%-------------------------------------------------
+
+% ## Tables
+
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{tabu}
+\RequirePackage{tabularx}
+\RequirePackage{tabulary}

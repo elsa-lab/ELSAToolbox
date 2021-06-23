@@ -1,0 +1,36 @@
+\newcommand{\makecover}[1]{
+\begin{titlepage}
+    \centering
+    \vspace*{.75in}
+    {\Huge \sc The ELSAToolbox Package}
+    
+    \vspace*{.25in}
+    {\Huge \sc User Manual}
+    
+    \vspace{.5in}
+    {\Large IT Group, ELSA Lab}
+    
+    \vfill
+    \includegraphics[width=.2\linewidth]{%
+        images/elsa-logo.png}
+    
+    Department of Computer Science
+    
+    National Tsing Hua University
+    
+    Taiwan
+    
+    #1
+\end{titlepage}
+}
+
+\newcommand{\maketoc}{
+    \tableofcontents
+    \thispagestyle{empty}
+    \clearpage
+}
+
+\newcommand{\env}[1]{\texttt{#1}}
+\newcommand{\pkg}[1]{\texttt{#1}}
+\newcommand{\opt}[1]{\texttt{#1}}
+\newcommand{\elsatoolbox}{\pkg{elsatoolbox}}

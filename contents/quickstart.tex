@@ -1,0 +1,85 @@
+\chapter{Quickstart}
+\label{content:quickstart}
+
+The \elsatoolbox{} is a package that includes several commonly used packages, which make preparing \LaTeX{} documents easier. In this chapter, we provide an overview of the usage of \elsatoolbox{} as well as some guidelines on \LaTeX{} writing. For the remainder of the article, we provide a number of examples and the usage of the included packages in the remainder of this article. The following chapters are organized as follows. Chapter~\ref{content:algorithms} introduces the \pkg{algorithm2e} package for typesetting algorithms in pseudocode. Chapter~\ref{content:annotations} summarizes the usage of a collaborative annotation tool, FiXme. Chapter~\ref{content:crossreferencing} demonstrates cross referencing with the \pkg{zref} package. Chapter~\ref{content:floats} deals with figures and captions. Chapter~\ref{content:hyperlinks} shows the usage of the \pkg{hyperref} package for enabling typesetting of hyperlinks. Chapter~\ref{content:mathematics} presents the mathematics typesetting. Chapter~\ref{content:spacing} provides solutions to adjust the spacing between lines in a \LaTeX{} document. Chapter~\ref{content:tables} explains the typesetting of tables.
+
+\section*{Usage}
+
+\begin{enumerate}
+    \item Create a new \LaTeX{} project with template files from the targeted venue.
+    \item Copy the style file \texttt{elsatoolbox.sty} to the new project.
+    \item Use the \elsatoolbox{} package by adding \verb|\usepackage{elsatoolbox}|.
+\end{enumerate}
+
+In practice, it is very likely that there are some warnings and errors. Most of them are due to package conflicts or incorrect commands. It is the users' responsibility to check and eliminate all warnings and error messages before proceeding. Finally, feel free to edit the style file after copying it to the new project.
+
+\section*{Draft Mode}
+
+The \elsatoolbox{} package provides an option for enabling draft mode. In order to enable it, add the option \opt{draft} to \elsatoolbox{} as the following:
+
+\begin{center}
+    \verb|\usepackage[draft]{elsatoolbox}|.
+\end{center}
+
+After the draft mode is enabled, the following features are turned on:
+
+\begin{enumerate}
+    \item ``Draft Mode'' showing at the top of each page
+    \item FiXme annotations
+    \item The list of corrections showing at the fist page
+    \item Colored hyperlinks
+\end{enumerate}
+
+\section*{Choosing Packages}
+
+There are many packages that offer similar or identical functionality. It's recommended to select the package by the following order of preferences:
+
+\begin{enumerate}
+    \item Choose more recently maintained packages
+    \item Choose packages with no compatibility issues
+    \item Choose simpler packages suited for users' needs
+\end{enumerate}
+
+\section*{Dos}
+
+\begin{enumerate}
+    \item Read author guidelines, especially for strict limitations, such as paper length.
+    \item Use consistent words and code
+    \item Use proofreading tools, such as Grammarly
+    \item Follow KISS principle: Keep it simple, stupid (Write it simple)
+    \item Follow YAGNI principle: You aren't gonna need it (Include only necessary stuff)
+    \item Follow DRY principle: Don't repeat yourself (Avoid duplication)
+\end{enumerate}
+
+\section*{Don'ts}
+
+\begin{enumerate}
+    \item Do not change the margins if users are preparing the manuscript of the targeted conference of journal
+    \item Do not adjust the font size of the main text
+    \item Do not use \verb|\\| to break a line (Instead, use a blank line)
+    \item Do not use any spacing commands \verb|\vspace| or \verb|\hspace| within the main contents
+\end{enumerate}
+
+\section*{Better Do It}
+
+\begin{enumerate}
+    \item Output the image at least 300 dpi
+    \item Make sure the characters can be clearly identified in the images
+    \item Sharpen the images by Unsharp mask filter
+    \item Put the figures, tables, and algorithms in ``figures'', ``tables'', and ``algorithms'' folders, respectively
+    \item Include comments when the code can not explain what it does
+    \item Check the warnings from compilers
+\end{enumerate}
+
+\section*{Better Avoid It}
+
+\begin{enumerate}
+    \item Should not adjust the spacing too much
+    \item Should not adjust the font size too much (of captions and references)
+    \item Should not use outdated or old-fashioned packages
+    \item Should not write complex code for trivial improvement
+\end{enumerate}
+
+\section*{Support}
+
+The \elsatoolbox{} is maintained by the IT group of ELSA Lab. Open an issue through our GitHub repository\footnote{\url{https://github.com/elsa-lab/elsatoolbox}} if one has any questions.

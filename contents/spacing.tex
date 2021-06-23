@@ -1,0 +1,80 @@
+\chapter{Spacing}
+\label{content:spacing}
+
+The \elsatoolbox{} package loads the \pkg{setspace} package, which allows users to adjust the spacing between lines in a document. However, as mentioned in Section~\ref{content:floats:captions}, adjusting the spacing is not recommended. It is wiser to reduce words. In this chapter, we first introduce the \env{spacing} environment provided by \pkg{setspace} in the first section. We then show several example commands for adjusting various types of spacing in the following sections. Please note that \pkg{setspace} is incompatible with the \texttt{beamer} \LaTeX{} class. To disable \pkg{setspace}, add the option \opt{nosetspace} to \elsatoolbox{} as the following:
+
+\begin{center}
+    \verb|\usepackage[nosetspace]{elsatoolbox}|
+\end{center}
+
+\section{The \env{spacing} Environment}
+
+The \env{spacing} environment allows users to adjust the spacing between lines in a local fashion.
+
+\bigskip
+
+\begin{lstlisting}
+\begin{spacing}{<stretch>}
+... contents ..
+\end{spacing}
+\end{lstlisting}
+
+The default \verb|<stretch>| is set to 1. Smaller \verb|<stretch>| will have less vertical spacing. For example, the following commands reduce the vertical spacing between equations as shown beside.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{.35\linewidth}
+\begin{lstlisting}
+\begin{spacing}{0.5}
+    \[ x=y \]
+    \[ x=y \]
+\end{spacing}%
+\end{lstlisting}
+    \end{subfigure}%
+    \begin{subfigure}{.3\linewidth}
+        \begin{spacing}{0.5}
+            \[ x=y \]
+            \[ x=y \]
+        \end{spacing}
+    \end{subfigure}
+\end{figure}
+
+\section{Fixed-length Spaces}
+
+The following example commands change the vertical spacing of \verb|\smallskip|, \verb|\medskip|, and \verb|\largeskip|.
+
+\begin{tabular}{l}
+    \verb|\setlength{\smallskipamount}{3.0pt plus 1.0pt minus 1.0pt}| \\
+    \verb|\setlength{\medskipamount}{6.0pt plus 2.0pt minus 2.0pt}| \\
+    \verb|\setlength{\bigskipamount}{12.0pt plus 4.0pt minus 4.0pt}|
+\end{tabular}
+
+\section{Floats and Text}
+
+There are two common types of layout for typesetting \LaTeX{} documents, the single column and the double column. Therefore, commands are different when using different layout types. For each layout type, the first example command adjusts the vertical spacing between two floats, and the second example command is for changing the vertical spacing between the last floats and the first textline.
+
+\begin{tabular}{ll}
+    \multicolumn{1}{c}{\textbf{Single Column}} & \multicolumn{1}{c}{\textbf{Double Column}} \\
+    \verb|\setlength{\floatsep}{2ex}| & \verb|\setlength{\dblfloatsep}{2ex}| \\
+    \verb|\setlength{\textfloatsep}{1ex}| & \verb|\setlength{\dbltextfloatsep}{1ex}|
+\end{tabular}
+
+\section{Paragraph Formatting}
+
+There are two different spacing related to paragraphs, horizontal spacing before the first line of a paragraph and vertical spacing between two paragraphs. The command \verb|\parindent| controls the former horizontal spacing, and the command \verb|\parskip| controls the latter vertical one. One can use the following example commands to change these spacing:
+
+\begin{tabular}{@{}ll@{}}
+    \verb|\setlength{\parindent}{1em}| &
+    \verb|\setlength{\parskip}{0.0pt plus 1.0pt}|
+\end{tabular}
+
+\section{Display Style Formula}
+
+There are four commands to control the amount of vertical space before, and after, a displayed equation. Users may adjust these spacing via the following example commands:
+
+\begin{tabular}{l}
+    \verb|\setlength{\abovedisplayskip}{10.0pt plus 2.0pt minus 5.0pt}| \\
+    \verb|\setlength{\belowdisplayskip}{10.0pt plus 2.0pt minus 5.0pt}| \\
+    \verb|\setlength{\abovedisplayshortskip}{0.0pt plus 3.0pt}| \\
+    \verb|\setlength{\belowdisplayshortskip}{6.0pt plus 3.0pt minus 3.0pt}|
+\end{tabular}

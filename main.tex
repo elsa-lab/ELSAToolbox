@@ -1,0 +1,20 @@
+\documentclass[a4paper,12pt]{report}
+
+%%% ELSA Toolbox %%%
+
+% disable the draft mode
+\usepackage{elsatoolbox}
+
+%%% User-defined %%%
+
+\input{user-defined/usepackage.tex}
+\input{user-defined/newcommand.tex}
+\input{user-defined/config.tex}
+
+%%% Main Content %%%
+
+\begin{document}
+\makecover{\today}
+\maketoc
+\input{contents/all.tex}
+\end{document}

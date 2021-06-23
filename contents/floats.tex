@@ -1,0 +1,105 @@
+\chapter{Floats}
+\label{content:floats}
+
+Floats are containers for things in a document that cannot be broken over a page. The \LaTeX{} typesetting system by default recognizes ``table'' and ``figure'' floats. In this chapter, we first explain floating figures in detail. We then briefly introduce the adjustment of the captions of floats. Note that floating tables are mainly covered in Chapter~\ref{content:tables}.
+
+\section{Figures}
+\label{content:floats:figures}
+
+To import external graphics, one can insert the external graphic with the command:
+
+\begin{center}
+    \verb|\includegraphics[<options>]{<file>}|.
+\end{center}
+
+The most commonly used option is \verb|width=<value>|, which scales the graphic to this value. For example, the following command imports an example image, and \LaTeX{} itself treats the image like normal text:
+
+\begin{center}
+    \verb|\includegraphics[width=.4\linewidth]{example-image}|
+    \bigskip
+    
+    \includegraphics[width=.4\linewidth]{example-image}
+\end{center}
+
+To create a figure that floats, use the \env{figure} environment.
+
+\bigskip
+
+\begin{lstlisting}
+\begin{figure}[placement specifier]
+... figure contents ...
+\end{figure}
+\end{lstlisting}
+
+The \opt{placement specifier} gives a greater degree of control over where certain floats are placed. We list the commonly used specifiers as follows.
+
+\bigskip
+
+\begin{tabularx}{.9\linewidth}{cX}
+    \toprule
+    Specifier & Permission \\
+    \midrule
+    h & Place the float here, i.e., approximately at the same point it occurs in the source text (however, not exactly at the spot) \\
+    t & Position at the top of the page. \\
+    b & Position at the bottom of the page. \\
+    \bottomrule
+\end{tabularx}
+
+\bigskip
+
+The following example creates Fig.~\ref{fig:example-a} that placed at the the top of the page:
+
+\bigskip
+
+\lstinputlisting{figures/example-a.tex}
+\input{figures/example-a.tex}
+
+Instead of placing floats on the current page, one may consider moving floats to the next page. To achieve this, surround the float with \verb|\afterpage{<float>}| to make it appear after the current page. For example, the following commands create Fig.~\ref{fig:example-b} that placed at the top of the following page:
+
+\bigskip
+
+\lstinputlisting{figures/example-b.tex}
+\input{figures/example-b.tex}
+
+\section{Subfloats}
+\label{content:floats:subfloats}
+
+In this section, we introduce the \pkg{subcaption} package that allows users to have subfloats within floats. Please note that \elsatoolbox{} loads \pkg{subcaption} that may be incompatible with some template files. To solve this issue, the \pkg{subfig} package is a useful alternative to \pkg{subcaption}. Before using \pkg{subfig}, users should disable \pkg{subcaption} by adding the option \opt{nosubcap} to \elsatoolbox{} as the following:
+
+\begin{center} 
+    \verb|\usepackage[nosubcap]{elsatoolbox}|.
+\end{center}
+
+The following example creates Fig.~\ref{fig:exmples-a-b}.
+
+\bigskip
+
+\lstinputlisting{figures/exmples-a-b.tex}
+\input{figures/exmples-a-b.tex}
+
+\section{Captions}
+\label{content:floats:captions}
+
+Although adjusting the vertical spacing between floats and captions to compact/relax the main text is not recommended, it is wiser to use smaller floats or reduce words. We still provide ways to customize captions using \pkg{subcaption} as following:
+
+\bigskip
+
+\begin{lstlisting}
+% Customize figure environment
+\captionsetup[figure]{
+    font=small, % Font size option
+    skip=1ex    % Vertical space between float and caption
+}
+
+% Customize table environment
+\captionsetup[table]{
+    font=small, % Font size option
+    skip=1ex    % Vertical space between float and caption
+}
+
+% Customize subfigure environment
+\captionsetup[sub]{
+    font=small, % Font size option
+    skip=1ex    % Vertical space between subfloat and subcaption
+}
+\end{lstlisting}

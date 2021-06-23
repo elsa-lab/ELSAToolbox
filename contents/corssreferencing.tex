@@ -1,0 +1,10 @@
+\chapter{Cross Referencing}
+\label{content:crossreferencing}
+
+The \elsatoolbox{} package allows cross-referencing across two independent documents, \texttt{main.tex} and \texttt{supp.tex}. In other words, users can have a reference in \texttt{main.tex} to something labelled in \texttt{supp.tex}, without including \texttt{supp.tex} in \texttt{main.tex}. For example, \verb|\zref{supp:fig:example}| can easily reference Fig.~\zref{supp:fig:example} of \texttt{supp.tex}. There are two steps required to enable cross-referencing:
+\begin{enumerate}
+    \item Create a new file named \texttt{latexmkrc} and add the following code to it.
+    \item Clear cached files and recompile.
+\end{enumerate}
+
+\lstinputlisting{latexmkrc}

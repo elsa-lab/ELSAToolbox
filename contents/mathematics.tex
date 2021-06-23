@@ -1,0 +1,71 @@
+\chapter{Mathematics}
+\label{content:mathematics}
+
+Typesetting mathematics is one of \LaTeX{}'s greatest strengths. It is also a large topic due to the existence of so much mathematical notation. In this chapter, we are not going to go through the typesetting in detail. Instead, we only mention the principle of it in the following sections. For those who desire to learn from scratch, the Wikibooks of \LaTeX{}\footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}} contains extensive examples and explanations.
+
+\section{Mathematics Environments}
+\label{content:mathematics:math-envs}
+
+The following table summarizes special environments for typesetting math notation.
+
+\begin{tabular}{cccc}
+    \toprule
+    Type & Inline & Displayed & Numbered and displayed \\
+    \midrule
+    Environment & \env{math} & \env{displaymath} & \env{equation}\footnotemark \\
+    \LaTeX{} shorthand & \verb|\(...\)| & \verb|\[...\]| \\
+    \TeX{} shorthand & \verb|$...$| & \verb|$$...$$| \\
+    \bottomrule
+\end{tabular}
+\footnotetext{The starred version \env{equation*} suppresses numbering.}
+
+\paragraph{Suggestion}~Using the \verb|$$...$$| should be avoided, as it may cause problems, particularly with the AMS-\LaTeX{} macros. Furthermore, should a problem occur, the error messages may not be helpful.
+
+In order for some operators, such as $\lim$ or $\sum$, to be displayed correctly inside some math environments (read \verb|$...$|), it might be convenient to write the \verb|\displaystyle| class inside the environment. Doing so might cause the line to be taller, but will cause exponents and indices to be displayed correctly for some math operators. For example, $\displaystyle\sum_{i=0}^\infty$ (\verb|$\displaystyle\sum_{i=0}^\infty$|) is preferable to $\sum_{i=0}^\infty$ (\verb|$\sum_{i=0}^\infty$|).
+
+\section{Brackets, Braces, and Delimiters}
+\label{content:mathematics:brackets-braces-delimiters}
+
+Mathematical features will differ in size frequently, in which case the delimiters surrounding the expression should vary accordingly. This can be done automatically using the \verb|\left|, \verb|\right|, and \verb|\middle| commands. For examples,
+
+\begin{tabular}{rl}
+    \verb|\left(\frac{x^2}{y^3}\right)| & \( \displaystyle \left(\frac{x^2}{y^3}\right) \) \\ 
+    \\ 
+    \verb|P\left(A=2\middle\vert\frac{A^2}{B}>4\right)| & \( \displaystyle P\left(A=2\middle\vert\frac{A^2}{B}>4\right) \).
+\end{tabular}
+
+Curly braces are defined differently by using \verb|\left\{| and \verb|\right\}|,
+
+\begin{tabular}{rl}
+    \verb|\left\{\frac{x^2}{y^3}\right\}| & \( \displaystyle \left\{\frac{x^2}{y^3}\right\} \)
+\end{tabular}
+
+If a delimiter on only one side of an expression is required, then an invisible delimiter on the other side may be denoted using a period (\texttt{.}).
+
+\begin{tabular}{rl}
+    \verb|\left.\frac{x^3}{3}\right\vert_0^1| & \( \displaystyle \left.\frac{x^3}{3}\right\vert_0^1 \)
+\end{tabular}
+
+\section{Horizontal Spacing}
+\label{content:mathematics:horizontal-spacing}
+
+Suppose one is trying to display the following equation:
+
+\[\int y \, \mathrm{d}x,\]
+
+he/she may write ``\verb|\int y \mathrm{d}x|''. However, this results in the equation below instead of the one above.
+
+\[\int y \mathrm{d}x\]
+
+In this situation, a \verb|\quad| would clearly be overkill. What is needed are some small spaces to be utilized in this type of instance, and that's what \LaTeX{} provides:
+
+\begin{tabular}{cc|cc}
+    \toprule
+    Commands & Description & Commands & Description \\
+    \midrule
+    \verb|\,| & small space & \verb|\;| & large space \\
+    \verb|\:| & medium space & \verb|\!| & negative space \\
+    \bottomrule
+\end{tabular}
+
+By taking advantage of these horizontal spacing commands, he/she is able to rectify the above problem using ``\verb|\int y \, \mathrm{d}x|''.

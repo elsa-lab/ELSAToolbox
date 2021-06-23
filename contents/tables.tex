@@ -1,0 +1,73 @@
+\chapter{Tables}
+\label{content:tables}
+
+The \LaTeX{} has built-in support to typeset tables and provides two environments, \env{tabular} and \env{table}. To typeset material in rows and columns, the \env{tabular} environment is needed. In this chapter, we briefly go through the \env{tabular} environment and the \env{table} environment. For the advance usage of \pkg{tabular} and the usage of the other packages loaded by \elsatoolbox{} (i.e., \pkg{tabu}, \pkg{tabularx}, and \pkg{tabulary}), please check out the Wikibooks of \LaTeX{}\footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Tables}}.
+
+\section{The \env{tabular} Environment}
+\label{content:tables:tabular}
+
+To typeset tables with optional horizontal and vertical lines, one can use the \env{tabular} environment. The width of each column of tables is determined automatically.
+
+\bigskip
+
+\begin{lstlisting}
+\begin{tabular}[pos]{table spec}
+... table contents ...
+\end{tabular}
+\end{lstlisting}
+
+The \opt{table spec} argument tells \LaTeX{} the alignment to be used in each column and the vertical lines to insert. The number of columns does not need to be specified as it is inferred by looking at the number of arguments provided.
+
+\begin{tabular}{ll}
+    \toprule
+    Table Spec & Description \\
+    \midrule
+    \opt{l} & left-justified column \\
+    \opt{c} & centered column \\
+    \opt{r} & right-justified column \\
+    \verb|p{<width>}| & paragraph column with text vertically aligned at the top \\
+    \verb|m{<width>}| & paragraph column with text vertically aligned in the middle \\
+    \verb|b{<width>}| & paragraph column with text vertically aligned at the bottom \\
+    \opt{|} & vertical line between columns \\
+    \bottomrule
+\end{tabular}
+
+By default, if the text in a column is too wide for the page, \LaTeX{} won’t automatically wrap it. Using \verb|p{<width>}| you can define a special type of column which will wrap-around the text as in a normal paragraph. You can pass the width using any unit supported by \LaTeX{}, such as `pt' and `cm', or command lengths, such as \verb|\textwidth|. 
+
+The optional parameter \opt{pos} can be used to specify the vertical position of the table relative to the baseline of the surrounding text. In most cases, you will not need this option.
+
+\begin{tabular}{cl}
+    \toprule
+    Specifier & Permission \\
+    \midrule
+    b & bottom \\
+    c & center (default) \\
+    t & top \\
+    \bottomrule
+\end{tabular}
+
+This example shows how to create a simple table, which is a 3\texttimes{}3 table.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{.45\linewidth}
+        \centering
+        \lstinputlisting[firstline=3,lastline=9]{tables/example.tex}
+    \end{subfigure}%
+    \begin{subfigure}{.3\linewidth}
+        \begin{tabular}{ l | c | r }
+            \toprule
+            1 & 2 & 3 \\ \hline
+            4 & 5 & 6 \\ \hline
+            7 & 8 & 9 \\
+            \bottomrule
+        \end{tabular}
+    \end{subfigure}
+\end{figure}
+
+\section{The \pkg{table} Environment}
+\label{content:tables:table}
+
+The optional \env{table} environment is a container for floating material similar to \env{figure}, into which a \env{tabular} environment may be included. The following example shows how to create a floating tables.
+
+\lstinputlisting{tables/example.tex}

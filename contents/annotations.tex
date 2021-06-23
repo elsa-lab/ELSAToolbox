@@ -1,0 +1,65 @@
+\chapter{Annotations}
+\label{content:annotations}
+
+Annotating a document here refers to inserting notes that do not belong to the document for development or reviewing purposes. Such notes may involve different importance levels, ranging from simple ``fix the spelling'' flags to critical ``this paragraph is a lie'' mentions. Annotations like this should be visible during the development or reviewing phase, but should disappear in the final version of the document.
+
+\section{Basic Usage}
+\label{content:annotations:basic}
+
+FiXme provides four different levels for inserting notes: \texttt{note}, \texttt{warning}, \texttt{error}, and \texttt{fatal}. Users may insert notes through the command:
+
+\begin{center}
+    \verb|\fx<level>[<option>]{<note>}|.
+\end{center}
+
+The most commonly used option is \verb|author=<name>|, which tags the author of the inserted note. For example, one may want to leave a note to the other collaborators, he/she can use the command under the draft mode:
+
+\begin{center}
+    \verb|\fxnote[author=someone]{note to be inserted}|.
+\end{center}
+
+Additionally, we list the example commands for inserting different levels of annotations as follows.
+
+\bigskip
+
+\begin{tabular}{@{}ll@{}}
+    \toprule
+    Commands & Annotations \\
+    \midrule
+    \verb|\fxnote[author=Anna]{This is a note.}| & \fxnote[status=draft,author=Anna]{This is a note.} \\
+    \verb|\fxwarning[author=Belle]{This is a warning.}| & \fxwarning[status=draft,author=Belle]{This is a warning.} \\
+    \verb|\fxerror[author=Cindy]{This is an error.}| & \fxerror[status=draft,author=Cindy]{This is an error.} \\
+    \verb|\fxfatal[author=Dora]{This is a fatal.}| & \fxfatal[status=draft,author=Dora]{This is a fatal.} \\
+    \bottomrule
+\end{tabular}
+
+\section{Highlighting Text}
+\label{content:annotations:higlight}
+
+Sometimes, users might want to insert a note and highlight the relevant part of the text to which it applies. FiXme provides starred versions of its annotation commands to do that. For example, the following phrase contains a typo: the \fxerror*[author=Elsa]{This is a typo}{fature} representation. One can highlight the typo with the command:
+
+\begin{center}
+    \verb|\fxerror*[author=Elsa]{This is a typo}{fature}|.
+\end{center}
+
+\section{Registering Authors}
+
+FiXme offers a command to registers a new author:
+
+\begin{center}
+    \verb|\FXRegisterAuthor{<cmdprefix>}{<envprefix>}{<author>}|.
+\end{center}
+
+It takes three arguments, where the last argument \verb|<author>| is simply the name of the author to be registered. For the former two arguments, \verb|<cmdprefix>| and \verb|<envprefix>| stand for the prefix of commands and environments\footnote{For the environments provided by FiXme, please check out the documentation on CTAN: \url{https://www.ctan.org/pkg/fixme}.} created by FiXme later, respectively. Suppose that we have registered Fiona like this:
+
+\begin{center}
+    \verb|\FXRegisterAuthor{fon}{afon}{Fiona}|.
+\end{center}
+
+After that, Fiona can use the commands \verb|\fonnote|, \verb|\fonwarning| etc., along with their starred versions. For the same example: the \fonerror*{This is a typo}{fature} representation. Fiona can highlight the typo with the command:
+
+\begin{center}
+    \verb|\fonerror*{This is a typo}{fature}|.
+\end{center}
+
+\paragraph{Warning~}\verb|<cmdprefix>| and \verb|<envprefix>| need to be different. The technical reason is that in \LaTeX{}, an environment named \env{foo} is defined in terms of two commands: \verb|\foo| and \verb|\endfoo| (the first one should be \verb|\beginfoo|). Consequently, if one uses the same prefix, he/she will get a name clash between the annotation commands and environments.

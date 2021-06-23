@@ -1,0 +1,49 @@
+\chapter{Algorithms}
+\label{content:algorithms}
+
+There are four common packages, \pkg{algorithmic}, \pkg{algorithm2e}, \pkg{algorithmicx}, and \pkg{program}, for typesetting algorithms in form of pseudocode. They provide stylistic enhancements over a uniform style (i.e., all in typewriter font) so that constructs such as loops or conditional statements are visually separated from other text. In this chapter, we introduce \pkg{algorithm2e}, which is loaded by \elsatoolbox{}. For the other packages, please check out the Wikibooks of \LaTeX{}\footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Algorithms}}.
+
+The \pkg{algorithm2e} package provides a floating \env{algorithm} environment for wrapping pseudocode and provides commands for writing pseudocode. Please note that this package is not compatible with the following packages: \pkg{algorithm}, \pkg{algorithmic}, and \pkg{algpseudocode}. In order to disable \pkg{algorithm2e}, add the option \opt{noalgo} to \elsatoolbox{} as the following:
+
+\begin{center}
+    \verb|\usepackage[noalgo]{elsatoolbox}|.
+\end{center}
+
+\section*{Usage}
+
+Typically, each statement of algorithms should be ended with \verb|\;|. In the following paragraphs, we list the commonly used commands provided by \pkg{algorithm2e}. For more advanced usage, please check out the documentation on CTAN\footnote{\url{https://www.ctan.org/pkg/algorithm2e}}.
+
+\paragraph{Customization}
+
+\begin{tabular}{lll}
+    \verb|\DontPrintSemicolon| & \verb|\SetAlgoCaptionSeparator[s]{<sep>}|
+\end{tabular}
+
+\paragraph{Input, Output, Basic Keywords}
+
+\begin{tabular}{lll}
+    \verb|\KwIn{<input>}| & \verb|\KwData{<input>}| & \verb|\KwTo| \\
+    \verb|\KwOut{<output>}| & \verb|\KwResult{<output>}| & \verb|\KwRet{<value>}|
+\end{tabular}
+
+\paragraph{Control Flow}
+
+\begin{tabular}{ll}
+    \verb|\If{<condition>}{<block>}| & \verb|\For{<condition>}{<loop>}| \\
+    \verb|\ElseIf{<condition>}{<block>}| & \verb|\While{<condition>}{<loop>}| \\
+    \verb|\Else{<block>}| & \verb|\ForEach{<condition>}{<loop>}| \\
+    \verb|\Switch{<condition>}{<block>}| & \verb|\ForAll{<condition>}{<loop>}| \\
+    \verb|\Case{<case>}{<block>}| & \verb|\Repeat{<condition>}{<loop>}|
+\end{tabular}
+
+\section*{Example}
+
+The following example creates Algorithm~\ref{algo:howto}.
+
+\bigskip
+
+\lstinputlisting{algorithms/howto.tex}
+
+\bigskip
+
+\input{algorithms/howto.tex}

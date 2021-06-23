@@ -1,0 +1,16 @@
+\chapter{Hyperlinks}
+\label{content:hyperlinks}
+
+The \elsatoolbox{} package loads the \pkg{hyperref} package, which allows users to produce hypertext links. There are three common commands: \verb|\url{<URL>}|, \verb|\href{<URL>}{<text>}|, and \verb|\hyperref[<label>]{<text>}|. For example,
+
+\bigskip
+
+\begin{tabular}{ll}
+    \toprule
+    Commands & Outputs \\
+    \midrule
+    \verb|\href{https://google.com}{Google}| & \href{https://google.com}{Google} \\
+    \verb|\url{https://google.com}| & \url{https://google.com} \\
+    \verb|\hyperref[content:quickstart]{Quickstart}| & \hyperref[content:quickstart]{Quickstart} \\
+    \bottomrule
+\end{tabular}
