@@ -1,6 +1,6 @@
 # The ELSAToolbox Package
 
-The `elsatoolbox` package loads several commonly used packages, which makes preparing LaTeX documents easier. One can access the user manual of this package through `user-manual/main.pdf`, where the draft and the supplementary material can be accessed by `user-manual/main.drft.pdf` and `user-manual/supp.pdf`, respectively.
+The `elsatoolbox` package loads several commonly used packages, which makes preparing LaTeX documents easier. One can access the user manual of this package through `user-manual/main.pdf`, where the draft and the supplementary material of it are placed at `user-manual/main.drft.pdf` and `user-manual/supp.pdf`, respectively.
 
 ## Quickstart
 
