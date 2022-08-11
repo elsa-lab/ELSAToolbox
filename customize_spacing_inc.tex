@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Copyright
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Copyright 2019 Yi-Hsiang Chang
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # General Spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## Customize Fixed-length Spaces
+%
+% Change vertical spacing of the commands `\smallskip`, `\medskip` and `\largeskip`.
+% It is not recommended to adjust these spacing. It is wiser to reduce words.
+
+% \setlength{\smallskipamount}{3.0pt plus 1.0pt minus 1.0pt}    % Vertical spacing of `\smallskip`
+% \setlength{\medskipamount}{6.0pt plus 2.0pt minus 2.0pt}      % Vertical spacing of `\medskip`
+% \setlength{\bigskipamount}{12.0pt plus 4.0pt minus 4.0pt}     % Vertical spacing of `\largeskip`
+
+%------------------------------------------------------------------------------
+
+% ## Customize Layout
+%
+% Change vertical spacing between floats and texts.
+% It is not recommended to adjust these spacing. It is wiser to use smaller figures or reduce words.
+
+% \setlength{\floatsep}{2ex}        % Vertical spacing between two floats
+% \setlength{\textfloatsep}{1ex}    % Vertical spacing between last float and first text line
+% \setlength{\dblfloatsep}{2ex}     % Vertical spacing between two floats (in two-column mode)
+% \setlength{\dbltextfloatsep}{1ex} % Vertical spacing between last float and first text line (in two-column mode)
+
+%------------------------------------------------------------------------------
+
+% ## Customize Paragraph Formatting
+%
+% Change paragraph spacing.
+% It is not recommended to adjust these spacing. It is wiser to reduce words.
+%
+% Reference: https://en.wikibooks.org/wiki/LaTeX/Paragraph_Formatting
+
+% \setlength{\parindent}{1em}               % Horizontal spacing before the first line of a paragraph
+% \setlength{\parskip}{0.0pt plus 1.0pt}    % Vertical spacing between two paragraphs
+
+%------------------------------------------------------------------------------
+
+% ## Customize Vertical Spacing Around Display Style Formula
+%
+% Change vertical spacing before and after display style formula
+% It is not recommended to adjust these spacing. It is wiser to reduce words.
+%
+% Reference: https://tex.stackexchange.com/a/30913
+
+% \setlength{\abovedisplayskip}{10.0pt plus 2.0pt minus 5.0pt}      % Vertical spacing before display style formula
+% \setlength{\belowdisplayskip}{10.0pt plus 2.0pt minus 5.0pt}      % Vertical spacing after display style formula
+% \setlength{\abovedisplayshortskip}{0.0pt plus 3.0pt}              % Vertical spacing before display style formula
+% \setlength{\belowdisplayshortskip}{6.0pt plus 3.0pt minus 3.0pt}  % Vertical spacing after display style formula
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Floats
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## Customize caption
+%
+% 1. Change font sizes
+% 2. Change vertical spacing after figures, tables, and subfigures.
+% In the case that these settings fail to change the desired spacing, it is recommended to use commands like `\smallskip`, `\medskip` or `\bigskip` if there is not enough spacing.
+% It is not recommended to adjust these spacing. It is wiser to use smaller tables or reduce words.
+
+% \captionsetup[figure]{    % Customize figure environment 
+%     font=small,   % Font size option
+%     skip=1ex      % Vertical space between float and caption
+% }
+
+% \captionsetup[table]{     % Customize table environment
+%     font=small,   % Font size options
+%     skip=1ex      % Vertical space between float and caption
+% }
+
+% \captionsetup[sub]{   % Customize subcaption environment
+%     font=small,   % Font size options
+%     skip=1ex      % Vertical space between sub-float and sub-caption
+% }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## Customize booktabs
+%
+% 1. Change line widths
+% 2. Change vertical spacing before and after lines
+
+% \setlength{\heavyrulewidth}{.08em}        % Change line width for `\toprule` and `\bottomrule`
+% \setlength{\lightrulewidth}{.05em}        % Change line width for `\midrule`
+% \setlength{\cmidrulewidth}{.03em}         % Change line width for `\cmidrule`
+% \setlength{\aboverulesep}{0ex}            % Change vertical spacing before lines except `\toprule`
+% \setlength{\belowrulesep}{0ex}            % Change vertical spacing after lines except `\bottomrule`
+% \setlength{\cmidrulesep}{\doublerulesep}  % Change vertical spacing between two `\cmidrule`
+
+%------------------------------------------------------------------------------
+
+% ## Customize tabu
+%
+% Change vertical spacing between the cell content and the cell border.
+
+% \setlength{\tabulinesep}{3pt} % Set the minimal vertical space allowed between the cell content and the cell border
+
