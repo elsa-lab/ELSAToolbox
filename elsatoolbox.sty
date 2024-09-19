@@ -339,6 +339,19 @@
 
 %-------------------------------------------------
 
+% ## Spacing
+
+\ifbool{nosetspacemode}{}{
+
+% ### NoSetspace mode is off
+%
+% Load the `setspace` package.
+
+    \RequirePackage{setspace}    
+}
+
+%-------------------------------------------------
+
 % ## Hyperlinks
 
 \ifbool{draftmode}{
@@ -381,19 +394,6 @@
 \RequirePackage{mathrsfs}
 \RequirePackage{mathtools}
 \RequirePackage{xfrac}
-
-%-------------------------------------------------
-
-% ## Spacing
-
-\ifbool{nosetspacemode}{}{
-
-% ### NoSetspace mode is off
-%
-% Load the `setspace` package.
-
-    \RequirePackage{setspace}    
-}
 
 %-------------------------------------------------
 
